@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function CreateNote() {
+function CreateNote(props) {
   const [text, setText] = useState({
     title: "",
     content: "",
@@ -14,6 +14,11 @@ function CreateNote() {
         [name]: value,
       };
     });
+  }
+
+  function handleClick(event) {
+    props.onAdd(text);
+    event.preventDefault();
   }
 
   return (
@@ -32,7 +37,7 @@ function CreateNote() {
           placeHolder="Take a short note..."
           rows="3"
         ></textarea>
-        <button>+</button>
+        <button onClick={handleClick} >+</button>
       </form>
     </div>
   );
