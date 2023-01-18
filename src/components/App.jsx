@@ -13,17 +13,30 @@ function App() {
     });
   }
 
+  function deleteNote(id) {
+    setNote((preNotes) => {
+      return preNotes.filter((note, index) => {
+        return index !== id;
+      });
+    });
+  }
+
   return (
-    <div>
+    <div className="App">
       <Header />
       <CreateNote onAdd={addNote} />
-      <div  className="flexPost">
-        {notes.map((note) => (
-          <div className="showPost">
-            <Post title={note.title} content={note.content} />
-          </div>
+      <div className="posts">
+        {notes.map((note, index) => (
+          <Post
+            title={note.title}
+            key={index}
+            id={index}
+            content={note.content}
+            onCheck={deleteNote}
+          />
         ))}
       </div>
+
       <Footer />
     </div>
   );

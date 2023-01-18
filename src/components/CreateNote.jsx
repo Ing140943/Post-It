@@ -18,6 +18,10 @@ function CreateNote(props) {
 
   function handleClick(event) {
     props.onAdd(text);
+    setText({
+      title: "",
+      content: "",
+    });
     event.preventDefault();
   }
 
@@ -28,16 +32,16 @@ function CreateNote(props) {
           name="title"
           value={text.title}
           onChange={handleChange}
-          placeHolder="Topic..."
+          placeholder="Topic..."
         ></input>
         <textarea
           name="content"
           value={text.content}
           onChange={handleChange}
-          placeHolder="Take a short note..."
+          placeholder="Take a short note..."
           rows="3"
         ></textarea>
-        <button onClick={handleClick} >+</button>
+        <button onClick={handleClick}>+</button>
       </form>
     </div>
   );
